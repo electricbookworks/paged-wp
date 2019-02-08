@@ -16,8 +16,18 @@ if ( ! defined( 'ABSPATH' ) ) {
 	return;
 }
 
+/**
+ * Admin actions
+ */
+/**
+ * Adds Paged Preview Button to Page Public Post Box
+ */
 add_action( 'post_submitbox_minor_actions', 'paged_add_paged_preview_button', 10, 1 );
 function paged_add_paged_preview_button( $post ) {
+	$screen = get_current_screen();
+	if ( 'page' !== $screen->id ) {
+		return;
+	}
 	$preview_link        = esc_url( get_preview_post_link( $post, array( 'paged' => 'true' ) ) );
 	$preview_button_text = __( 'Paged Preview' );
 	$preview_button      = sprintf(
@@ -32,4 +42,53 @@ function paged_add_paged_preview_button( $post ) {
 		<a class="preview button" href="<?php echo $preview_link; ?>" target="wp-preview-<?php echo (int) $post->ID; ?>" id="post-preview"><?php echo $preview_button; ?></a>
 	</div>
 	<?php
+}
+
+/**
+ * Frontend actions
+ */
+/**
+ * Check if the paged variable is set and set to true
+ */
+function paged_is_paged_preview() {
+	if ( isset( $_GET['paged'] ) ) {
+		$paged = filter_var( $_GET['paged'], FILTER_SANITIZE_STRING );
+		if ( 'true' !== $paged ) {
+			return false;
+		}
+
+		return true;
+	}
+	return false;
+}
+
+/**
+ * Add paged CSS from source
+ */
+add_action( 'wp_enqueue_scripts', 'paged_enqueue_preview_css' );
+function paged_enqueue_preview_css() {
+	if ( is_page() && is_preview() && paged_is_paged_preview() ) {
+		wp_enqueue_style(
+			'paged-css-main',
+			'https://raw.githubusercontent.com/electricbookworks/book-css/master/css/themes/default/main.css',
+			array(),
+			time()
+		);
+	}
+}
+
+/**
+ * Add paged JS from source
+ */
+add_action( 'wp_enqueue_scripts', 'paged_enqueue_preview_js' );
+function paged_enqueue_preview_js() {
+	if ( is_page() && is_preview() && paged_is_paged_preview() ) {
+		wp_enqueue_script(
+			'paged-js-main',
+			'https://unpkg.com/pagedjs/dist/paged.polyfill.js',
+			array(),
+			time(),
+			true
+		);
+	}
 }
