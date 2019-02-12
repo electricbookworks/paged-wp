@@ -70,7 +70,7 @@ function paged_enqueue_preview_css() {
 	if ( is_page() && is_preview() && paged_is_paged_preview() ) {
 		wp_enqueue_style(
 			'paged-css-main',
-			'https://raw.githubusercontent.com/electricbookworks/book-css/master/css/themes/default/main.css',
+			'https://electricbookworks.github.io/book-css/css/themes/default/main.css',
 			array(),
 			time()
 		);
