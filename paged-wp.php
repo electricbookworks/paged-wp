@@ -16,6 +16,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	return;
 }
 
+define( 'PAGED_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
+define( 'PAGED_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+
 /**
  * Admin actions
  */
@@ -24,10 +27,6 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 add_action( 'post_submitbox_minor_actions', 'paged_add_paged_preview_button', 10, 1 );
 function paged_add_paged_preview_button( $post ) {
-	$screen = get_current_screen();
-	if ( 'page' !== $screen->id ) {
-		return;
-	}
 	$preview_link        = esc_url( get_preview_post_link( $post, array( 'paged' => 'true' ) ) );
 	$preview_button_text = __( 'Paged Preview' );
 	$preview_button      = sprintf(
@@ -67,7 +66,7 @@ function paged_is_paged_preview() {
  */
 add_action( 'wp_enqueue_scripts', 'paged_enqueue_preview_css' );
 function paged_enqueue_preview_css() {
-	if ( is_page() && is_preview() && paged_is_paged_preview() ) {
+	if ( paged_is_paged_preview() ) {
 		wp_enqueue_style(
 			'paged-css-main',
 			'https://electricbookworks.github.io/book-css/css/themes/default/main.css',
@@ -82,7 +81,7 @@ function paged_enqueue_preview_css() {
  */
 add_action( 'wp_enqueue_scripts', 'paged_enqueue_preview_js' );
 function paged_enqueue_preview_js() {
-	if ( is_page() && is_preview() && paged_is_paged_preview() ) {
+	if ( paged_is_paged_preview() ) {
 		wp_enqueue_script(
 			'paged-js-main',
 			'https://unpkg.com/pagedjs/dist/paged.polyfill.js',
@@ -91,4 +90,17 @@ function paged_enqueue_preview_js() {
 			true
 		);
 	}
+}
+
+/**
+ * Override default template when using the paged preview.
+ */
+add_filter( 'template_include', 'paged_template_include', 99 );
+function paged_template_include( $template ) {
+
+	if ( paged_is_paged_preview() ) {
+		$template = trailingslashit( PAGED_PLUGIN_DIR ) . 'templates/index.php';
+	}
+
+	return $template;
 }
