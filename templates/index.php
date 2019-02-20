@@ -8,10 +8,25 @@
 	<meta name="description" content="Paged Preview">
 	<meta name="author" content="Electric Book Works">
 
-	<?php wp_head(); ?>
+	<?php do_action( 'paged_head' ); ?>
 </head>
 
 <body>
-<?php wp_footer(); ?>
+
+<div class="entry-content">
+	<?php
+
+	/* Start the Loop */
+	while ( have_posts() ) :
+		the_post();
+
+		the_content();
+
+	endwhile; // End of the loop.
+	?>
+</div>
+
+<?php do_action( 'paged_foot' ); ?>
+
 </body>
 </html>

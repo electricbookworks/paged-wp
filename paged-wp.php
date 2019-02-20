@@ -3,7 +3,7 @@
  * Plugin Name: Paged WP
  * Plugin URI:  https://example.com/plugins/the-basics/
  * Description: Work in progress, a WordPress plugin for using paged.js
- * Version:     0.0.1
+ * Version:     0.0.2
  * Author:      Jonathan Bossenger
  * Author URI:  https://jonathanbossenger
  * License:     GPL2
@@ -18,6 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 define( 'PAGED_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'PAGED_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+define( 'PAGED_VERSION', '0.0.2' );
 
 /**
  * Admin actions
@@ -64,31 +65,24 @@ function paged_is_paged_preview() {
 /**
  * Add paged CSS from source
  */
-add_action( 'wp_enqueue_scripts', 'paged_enqueue_preview_css' );
-function paged_enqueue_preview_css() {
+add_action( 'paged_head', 'paged_render_paged_css' );
+function paged_render_paged_css() {
 	if ( paged_is_paged_preview() ) {
-		wp_enqueue_style(
-			'paged-css-main',
-			'https://electricbookworks.github.io/book-css/css/themes/default/main.css',
-			array(),
-			time()
-		);
+		?>
+		<link rel='stylesheet' id='paged-css' href='https://electricbookworks.github.io/book-css/css/themes/default/main.css?ver=<?php echo PAGED_VERSION ?>' type='text/css'/>
+		<?php
 	}
 }
 
 /**
  * Add paged JS from source
  */
-add_action( 'wp_enqueue_scripts', 'paged_enqueue_preview_js' );
-function paged_enqueue_preview_js() {
+add_action('paged_foot', 'paged_render_paged_js');
+function paged_render_paged_js() {
 	if ( paged_is_paged_preview() ) {
-		wp_enqueue_script(
-			'paged-js-main',
-			'https://unpkg.com/pagedjs/dist/paged.polyfill.js',
-			array(),
-			time(),
-			true
-		);
+		?>
+		<script type='text/javascript' src='https://unpkg.com/pagedjs/dist/paged.polyfill.js?ver=<?php echo PAGED_VERSION ?>'></script>
+		<?php
 	}
 }
 
