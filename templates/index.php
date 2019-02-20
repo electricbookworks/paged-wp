@@ -13,18 +13,13 @@
 
 <body>
 
-<div class="entry-content">
-	<?php
-
-	/* Start the Loop */
-	while ( have_posts() ) :
-		the_post();
-
-		the_content();
-
-	endwhile; // End of the loop.
-	?>
-</div>
+<?php
+/* Start the Loop */
+while ( have_posts() ) :
+    the_post();
+    the_content();
+endwhile; // End of the loop.
+?>
 
 <?php do_action( 'paged_foot' ); ?>
 
