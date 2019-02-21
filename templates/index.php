@@ -12,6 +12,7 @@
 </head>
 
 <body>
+	<div class="paged-wp">
 
 <?php
 /* Start the Loop */
@@ -23,5 +24,6 @@ endwhile; // End of the loop.
 
 <?php do_action( 'paged_foot' ); ?>
 
+	</div>
 </body>
 </html>
