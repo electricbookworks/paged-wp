@@ -6,3 +6,4 @@ phpunit.xml.dist
 .git/
 bin/
 tests/
+templates/samples.html

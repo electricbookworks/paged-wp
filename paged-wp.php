@@ -1,11 +1,11 @@
 <?php
 /**
  * Plugin Name: Paged WP
- * Plugin URI:  https://example.com/plugins/the-basics/
- * Description: Work in progress, a WordPress plugin for using paged.js
- * Version:     0.0.2
- * Author:      Jonathan Bossenger
- * Author URI:  https://jonathanbossenger
+ * Plugin URI:  https://github.com/electricbookworks/paged-wp
+ * Description: A WordPress plugin for using paged.js
+ * Version:     1.0.0
+ * Author:      Electric Book Works
+ * Author URI:  https://electricbookworks.com/
  * License:     GPL2
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: paged-wp
@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 define( 'PAGED_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'PAGED_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
-define( 'PAGED_VERSION', '0.0.2' );
+define( 'PAGED_VERSION', '1.0.0' );
 
 /**
  * Admin actions
@@ -39,7 +39,8 @@ function paged_add_paged_preview_button( $post ) {
 	?>
 	<div class="clear"></div>
 	<div style="padding-top:10px;">
-		<a class="preview button" href="<?php echo $preview_link; ?>" target="wp-preview-<?php echo (int) $post->ID; ?>" id="post-preview"><?php echo $preview_button; ?></a>
+		<a class="preview button" href="<?php echo $preview_link; ?>" target="wp-preview-<?php echo (int) $post->ID; ?>"
+		   id="post-preview"><?php echo $preview_button; ?></a>
 	</div>
 	<?php
 }
@@ -59,6 +60,7 @@ function paged_is_paged_preview() {
 
 		return true;
 	}
+
 	return false;
 }
 
@@ -69,7 +71,7 @@ add_action( 'paged_head', 'paged_render_paged_css' );
 function paged_render_paged_css() {
 	if ( paged_is_paged_preview() ) {
 		?>
-		<link rel='stylesheet' id='paged-css' href='https://electricbookworks.github.io/book-css/css/themes/default/main.css?ver=<?php echo PAGED_VERSION ?>' type='text/css'/>
+        <link rel='stylesheet' id='paged-css' href='https://electricbookworks.github.io/book-css/css/themes/default/main.css?ver=<?php echo PAGED_VERSION ?>' type='text/css'/>
 		<?php
 	}
 }
@@ -77,11 +79,11 @@ function paged_render_paged_css() {
 /**
  * Add paged JS from source
  */
-add_action('paged_foot', 'paged_render_paged_js');
+add_action( 'paged_foot', 'paged_render_paged_js' );
 function paged_render_paged_js() {
 	if ( paged_is_paged_preview() ) {
 		?>
-		<script type='text/javascript' src='https://unpkg.com/pagedjs/dist/paged.polyfill.js?ver=<?php echo PAGED_VERSION ?>'></script>
+        <script type='text/javascript' src='https://unpkg.com/pagedjs/dist/paged.polyfill.js?ver=<?php echo PAGED_VERSION ?>'></script>
 		<?php
 	}
 }
