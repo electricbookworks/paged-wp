@@ -1,0 +1,9 @@
+.distignore
+.gitignore
+.phpcs.xml.dist
+.travis.yml
+phpunit.xml.dist
+.git/
+bin/
+tests/
+templates/samples.html
