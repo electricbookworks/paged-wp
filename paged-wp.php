@@ -92,7 +92,7 @@ add_action( 'paged_head', 'paged_render_paged_css' );
 function paged_render_paged_css() {
 	if ( paged_is_paged_preview() ) {
 		?>
-        <link rel='stylesheet' id='paged-css' href='https://paged.design/themes/template/main.css?ver=<?php echo PAGED_VERSION ?>' type='text/css'/>
+      <link rel="stylesheet" id="paged-css" href="<?php echo plugin_dir_url( __FILE__ ) . 'themes/template/main.css'; ?>" type="text/css" />
 		<?php
 	}
 }

@@ -1,0 +1,16 @@
+// _cross-references.scss
+
+// Cross-references include a page number
+#{$cross-reference},
+#{$show-page-number} {
+    &::after {
+        content: " (#{$locales-page} " target-counter(attr(href), page ) ")";
+    }
+}
+
+// Show a link's URL
+#{$show-url} {
+    &::after {
+        content: " (" attr(href) ")";
+    }
+}

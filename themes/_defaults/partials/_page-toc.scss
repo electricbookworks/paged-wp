@@ -1,0 +1,23 @@
+// _page-toc.scss
+
+#{$page-toc} {
+    break-before: recto;
+    // Conventionally, the 'Contents' heading is smaller
+    // than a chapter opener. So we use smaller styles
+    // for each heading level.
+    h1 {
+        @include h2();
+    }
+    h2 {
+        @include h3();
+    }
+    h3 {
+        @include h4();
+    }
+    h4 {
+        @include h5();
+    }
+    h5 {
+        @include h6();
+    }
+}
