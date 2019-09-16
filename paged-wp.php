@@ -24,7 +24,7 @@ define( 'PAGED_VERSION', '1.0.0' );
 
 require PAGED_PLUGIN_DIR . 'vendor/autoload.php';
 
-new Plugin_Base( PAGED_VERSION, __FILE__ );
+new Plugin_Base( __FILE__, PAGED_VERSION );
 
 /**
  * Admin actions
@@ -77,7 +77,15 @@ add_action( 'paged_head', 'paged_render_paged_css' );
 function paged_render_paged_css() {
 	if ( paged_is_paged_preview() ) {
 		?>
-        <link rel='stylesheet' id='paged-css' href='https://paged.design/themes/template/main.css?ver=<?php echo PAGED_VERSION ?>' type='text/css'/>
+		<link rel='stylesheet' id='paged-css' href='https://paged.design/themes/template/main.css?ver=<?php echo PAGED_VERSION ?>' type='text/css'/>
+		<?php
+	}
+	$paged_custom_css = get_option( 'paged_custom_css', '' );
+	if ( ! empty( $paged_custom_css ) ) {
+		?>
+		<style>
+			<?php echo $paged_custom_css ?>
+		</style>
 		<?php
 	}
 }
@@ -89,7 +97,8 @@ add_action( 'paged_foot', 'paged_render_paged_js' );
 function paged_render_paged_js() {
 	if ( paged_is_paged_preview() ) {
 		?>
-        <script type='text/javascript' src='https://unpkg.com/pagedjs/dist/paged.polyfill.js?ver=<?php echo PAGED_VERSION ?>'></script>
+		<script type='text/javascript'
+				src='https://unpkg.com/pagedjs/dist/paged.polyfill.js?ver=<?php echo PAGED_VERSION ?>'></script>
 		<?php
 	}
 }

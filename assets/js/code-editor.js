@@ -1,7 +1,7 @@
 'use strict';
 (function($){
     $(function(){
-        if( $('#paged_custom_css').length ) {
+        if( $('#custom_css').length ) {
             var editorSettings = wp.codeEditor.defaultSettings ? _.clone( wp.codeEditor.defaultSettings ) : {};
             editorSettings.codemirror = _.extend(
                 {},
@@ -12,7 +12,7 @@
                     mode: 'css',
                 }
             );
-            var editor = wp.codeEditor.initialize( $('#paged_custom_css'), editorSettings );
+            var editor = wp.codeEditor.initialize( $('#custom_css'), editorSettings );
         }
     });
 })(jQuery);

@@ -110,7 +110,6 @@ class Plugin_Settings {
                 default:
                     return;
             }
-            add_action( 'admin_print_styles-' . $page, array( $this, 'settings_assets' ) );
         }
     }
 
@@ -148,16 +147,6 @@ class Plugin_Settings {
     }
 
     /**
-     * Load settings JS & CSS
-     *
-     * @return void
-     */
-    public function settings_assets() {
-        //wp_register_script( $this->parent->token . '-settings-js', $this->parent->assets_url . 'js/settings' . $this->parent->script_suffix . '.js', array( 'farbtastic', 'jquery' ), '1.0.0', true );
-        //wp_enqueue_script( $this->parent->token . '-settings-js' );
-    }
-
-    /**
      * Add settings link to plugin list table
      *
      * @param  array $links Existing links.
@@ -181,7 +170,7 @@ class Plugin_Settings {
             'description' => __( 'Edit your custom CSS for Paged WP.', 'paged-wp' ),
             'fields'      => array(
                 array(
-                    'id'          => 'paged_custom_css',
+                    'id'          => 'custom_css',
                     'label'       => __( 'Custom CSS', 'paged-wp' ),
                     'description' => __( 'Edit your custom CSS for Paged WP.', 'paged-wp' ),
                     'type'        => 'textarea',

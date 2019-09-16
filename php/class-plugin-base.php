@@ -37,4 +37,8 @@ class Plugin_Base {
 		$this->admin = new Plugin_Admin_API();
 	}
 
+	public function enqueue_scripts(){
+
+	}
+
 }
