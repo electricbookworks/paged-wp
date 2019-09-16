@@ -7,7 +7,10 @@ namespace Composer\Autoload;
 class ComposerStaticInit73d6a8188589a2c5fa20c0568114d96e
 {
     public static $classMap = array (
-        'PagedWP\\CodeEditor' => __DIR__ . '/../..' . '/php/class-code-editor.php',
+        'PagedWP\\Code_Editor' => __DIR__ . '/../..' . '/php/class-code-editor.php',
+        'PagedWP\\Plugin_Admin_API' => __DIR__ . '/../..' . '/php/class-plugin-admin-api.php',
+        'PagedWP\\Plugin_Base' => __DIR__ . '/../..' . '/php/class-plugin-base.php',
+        'PagedWP\\Plugin_Settings' => __DIR__ . '/../..' . '/php/class-plugin-settings.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

@@ -6,5 +6,8 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'PagedWP\\CodeEditor' => $baseDir . '/php/class-code-editor.php',
+    'PagedWP\\Code_Editor' => $baseDir . '/php/class-code-editor.php',
+    'PagedWP\\Plugin_Admin_API' => $baseDir . '/php/class-plugin-admin-api.php',
+    'PagedWP\\Plugin_Base' => $baseDir . '/php/class-plugin-base.php',
+    'PagedWP\\Plugin_Settings' => $baseDir . '/php/class-plugin-settings.php',
 );

@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	return;
 }
 
-use PagedWP\CodeEditor;
+use PagedWP\Plugin_Base;
 
 define( 'PAGED_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'PAGED_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
@@ -24,7 +24,7 @@ define( 'PAGED_VERSION', '1.0.0' );
 
 require PAGED_PLUGIN_DIR . 'vendor/autoload.php';
 
-new CodeEditor( PAGED_VERSION, __FILE__ );
+new Plugin_Base( PAGED_VERSION, __FILE__ );
 
 /**
  * Admin actions

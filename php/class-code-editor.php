@@ -7,19 +7,17 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-class CodeEditor {
+class Code_Editor {
 
-	protected $file;
-	protected $version;
+	public $parent;
 
-	public function __construct( $file, $version ) {
-		$this->file    = $file;
-		$this->version = $version;
+	public function __construct($parent) {
+		$this->parent = $parent;
 		$this->bootstrap();
 	}
 
 	public function bootstrap() {
-		add_action( 'admin_enqueue_scripts', array( $this, 'add_page_scripts_enqueue_script' ) );
+		add_action( 'admin_enqueue_scripts', [ $this, 'add_page_scripts_enqueue_script' ] );
 	}
 
 	/**
@@ -28,16 +26,10 @@ class CodeEditor {
 	 * @param $hook
 	 */
 	public function add_page_scripts_enqueue_script( $hook ) {
-		global $post;
-		if ( ! $post ) {
+		if ( 'settings_page_paged__settings' !== $hook ) {
 			return;
 		}
-		if ( ! 'page' === $post->post_type ) {
-			return;
-		}
-		if ( 'post.php' === $hook || 'post-new.php' === $hook ) {
-			wp_enqueue_code_editor( array( 'type' => 'text/html' ) );
-			wp_enqueue_script( 'js-code-editor', $this->file . '/code-editor.js', array( 'jquery' ), $this->version, true );
-		}
+		wp_enqueue_code_editor( [ 'type' => 'text/html' ] );
+		wp_enqueue_script( 'js-code-editor', $this->parent->assets_url . '/js/code-editor.js', [ 'jquery' ], $this->parent->version, true );
 	}
 }
