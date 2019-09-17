@@ -23,7 +23,7 @@ class Plugin_Base {
 	public function __construct( $file, $version ) {
 		$this->file    = $file;
 		$this->version = $version;
-		$this->token = 'paged_';
+		$this->token   = 'paged_';
 
 		$this->file       = $file;
 		$this->dir        = dirname( $this->file );
@@ -32,13 +32,8 @@ class Plugin_Base {
 
 		$this->script_suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
 
-		$this->code_editor = new Code_Editor($this);
-		$this->settings = new Plugin_Settings($this);
-		$this->admin = new Plugin_Admin_API();
+		$this->code_editor = new Code_Editor( $this );
+		$this->settings    = new Plugin_Settings( $this );
+		$this->admin       = new Plugin_Admin_API();
 	}
-
-	public function enqueue_scripts(){
-
-	}
-
 }

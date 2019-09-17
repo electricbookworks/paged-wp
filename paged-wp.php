@@ -77,7 +77,7 @@ add_action( 'paged_head', 'paged_render_paged_css' );
 function paged_render_paged_css() {
 	if ( paged_is_paged_preview() ) {
 		?>
-		<link rel='stylesheet' id='paged-css' href='https://paged.design/themes/template/main.css?ver=<?php echo PAGED_VERSION ?>' type='text/css'/>
+		<link rel='stylesheet' id='paged-css' href='<?php echo PAGED_PLUGIN_URL ?>/assets/css/paged.css?ver=<?php echo PAGED_VERSION ?>' type='text/css'/>
 		<?php
 	}
 	$paged_custom_css = get_option( 'paged_custom_css', '' );

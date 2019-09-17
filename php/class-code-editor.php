@@ -11,13 +11,13 @@ class Code_Editor {
 
 	public $parent;
 
-	public function __construct($parent) {
+	public function __construct( $parent ) {
 		$this->parent = $parent;
 		$this->bootstrap();
 	}
 
 	public function bootstrap() {
-		add_action( 'admin_enqueue_scripts', [ $this, 'add_page_scripts_enqueue_script' ] );
+		add_action( 'admin_enqueue_scripts', array( $this, 'add_page_scripts_enqueue_script' ) );
 	}
 
 	/**
@@ -29,7 +29,7 @@ class Code_Editor {
 		if ( 'settings_page_paged__settings' !== $hook ) {
 			return;
 		}
-		wp_enqueue_code_editor( [ 'type' => 'text/html' ] );
-		wp_enqueue_script( 'js-code-editor', $this->parent->assets_url . '/js/code-editor.js', [ 'jquery' ], $this->parent->version, true );
+		wp_enqueue_code_editor( array( 'type' => 'text/html' ) );
+		wp_enqueue_script( 'js-code-editor', $this->parent->assets_url . '/js/code-editor.js', array( 'jquery' ), $this->parent->version, true );
 	}
 }
