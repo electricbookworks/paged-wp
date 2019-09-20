@@ -124,8 +124,8 @@ class Plugin_Settings {
 			array(
 				'location'    => 'options', // Possible settings: options, menu, submenu.
 				'parent_slug' => 'options-general.php',
-				'page_title'  => __( 'Paged Plugin Settings', 'paged-wp' ),
-				'menu_title'  => __( 'Paged Plugin Settings', 'paged-wp' ),
+				'page_title'  => __( 'Paged WP', 'paged-wp' ),
+				'menu_title'  => __( 'Paged WP', 'paged-wp' ),
 				'capability'  => 'manage_options',
 				'menu_slug'   => $this->parent->token . '_settings',
 				'function'    => array( $this, 'settings_page' ),
@@ -168,13 +168,13 @@ class Plugin_Settings {
 	private function settings_fields() {
 
 		$settings['standard'] = array(
-			'title'       => __( 'Custom CSS', 'paged-wp' ),
-			'description' => __( 'Edit your custom CSS for Paged WP.', 'paged-wp' ),
+			'title'       => __( 'Page design', 'paged-wp' ),
+			'description' => __( 'Add custom CSS styles for Paged WP here. They will override the default Paged WP styles.', 'paged-wp' ),
 			'fields'      => array(
 				array(
 					'id'          => 'custom_css',
 					'label'       => __( 'Custom CSS', 'paged-wp' ),
-					'description' => __( 'Edit your custom CSS for Paged WP.', 'paged-wp' ),
+					'description' => __( 'Custom CSS for Paged WP', 'paged-wp' ),
 					'type'        => 'textarea',
 					'default'     => '',
 					'placeholder' => __( '', 'paged-wp' ),
