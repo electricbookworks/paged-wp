@@ -27,54 +27,6 @@ require PAGED_PLUGIN_DIR . 'vendor/autoload.php';
 new Plugin_Base( __FILE__, PAGED_VERSION );
 
 /**
- * Register Paged Preview meta box.
- */
-function wppaged_register_meta_boxes() {
-	add_meta_box( 'meta-box-paged', __( 'Paged Preview', 'textdomain' ), 'wppaged_my_display_callback', 'post', 'side', 'high',
-		array(
-			'__back_compat_meta_box' => false,
-		)
-	);
-}
-
-add_action( 'add_meta_boxes', 'wppaged_register_meta_boxes' );
-
-/**
- * Meta box display callback.
- *
- * @param WP_Post $post Current post object.
- */
-function wppaged_my_display_callback( $post ) {
-	// Display code/markup goes here. Don't forget to include nonces!
-	$preview_link        = esc_url( get_preview_post_link( $post, array( 'paged' => 'true' ) ) );
-	$preview_button_text = __( 'Paged Preview' );
-	$preview_button      = sprintf(
-		'%1$s<span class="screen-reader-text"> %2$s</span>',
-		$preview_button_text,
-		/* translators: accessibility text */
-		__( '(opens in a new window)' )
-	);
-	?>
-	<div class="clear"></div>
-	<div style="padding-top:10px;">
-		<a class="button" href="<?php echo $preview_link; ?>" target="wp-preview-<?php echo (int) $post->ID; ?>"
-		   id="paged-preview"><?php echo $preview_button; ?></a>
-	</div>
-	<?php
-}
-
-/**
- * Save meta box content.
- *
- * @param int $post_id Post ID
- */
-function wppaged_save_meta_box( $post_id ) {
-	// Save logic goes here. Don't forget to include nonce checks!
-}
-
-add_action( 'save_post', 'wppaged_save_meta_box' );
-
-/**
  * Frontend actions
  */
 /**

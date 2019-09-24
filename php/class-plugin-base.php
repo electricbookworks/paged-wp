@@ -8,6 +8,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 class Plugin_Base {
+
+	public $metabox;
 	public $code_editor;
 	public $settings;
 	public $admin;
@@ -32,6 +34,7 @@ class Plugin_Base {
 
 		$this->script_suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
 
+		$this->metabox     = new Metabox();
 		$this->code_editor = new Code_Editor( $this );
 		$this->settings    = new Plugin_Settings( $this );
 		$this->admin       = new Plugin_Admin_API();
