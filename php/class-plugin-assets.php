@@ -22,7 +22,7 @@ class Plugin_Assets {
 	/**
 	 * Check if the paged variable is set and set to true
 	 */
-	function is_paged_preview() {
+	public function is_paged_preview() {
 		if ( isset( $_GET['paged'] ) ) {
 			$paged = filter_var( $_GET['paged'], FILTER_SANITIZE_STRING );
 			if ( 'true' !== $paged ) {
@@ -36,7 +36,7 @@ class Plugin_Assets {
 	/**
 	 * Add paged CSS
 	 */
-	function render_paged_css() {
+	public function render_paged_css() {
 		if ( $this->is_paged_preview() ) {
 			?>
 			<link rel='stylesheet' id='paged-css' href='<?php echo PAGED_PLUGIN_URL ?>/assets/css/paged.css?ver=<?php echo PAGED_VERSION ?>' type='text/css'/>
@@ -45,7 +45,7 @@ class Plugin_Assets {
 		$paged_custom_css = get_option( 'paged_custom_css', '' );
 		if ( ! empty( $paged_custom_css ) ) {
 			?>
-			<style>
+			<style type="text/css" id="custom-paged-css">
 				<?php echo $paged_custom_css ?>
 			</style>
 			<?php

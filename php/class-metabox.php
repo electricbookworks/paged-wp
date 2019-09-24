@@ -20,7 +20,7 @@ class Metabox {
 	 * Register Paged Preview meta box.
 	 */
 	function register_meta_box() {
-		add_meta_box( 'meta-box-paged', __( 'Paged Preview', 'textdomain' ), array( $this, 'meta_display' ), 'post', 'side', 'high',
+		add_meta_box( 'meta-box-paged', __( 'Paged Preview', 'textdomain' ), array( $this, 'meta_display' ), array('post', 'page'), 'side', 'high',
 			array(
 				'__back_compat_meta_box' => false,
 			)
