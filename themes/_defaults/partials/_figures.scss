@@ -1,0 +1,45 @@
+// _figures.scss
+
+// Figures
+// By default all figures float to the bottoms of their pages.
+// Figures might be created as divs, blockquotes, or <figure> elements,
+// so we try to take those into account here with rules
+// that might apply to those elements elsewhere.
+
+#{$figure} {
+    clear: both;
+    float: bottom; // not yet supported by paged.js
+    margin: $line-height-default 0;
+    break-inside: avoid;
+    background-color: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    color: inherit;
+    padding: 0;
+    width: 100%;
+    box-sizing: border-box;
+    p {
+        clear: both;
+        page-break-inside: avoid;
+        page-break-before: avoid;
+        text-align: center;
+        text-indent: 0;
+        font-size: $font-size-default * $font-size-smaller;
+    }
+    img, p img {
+        width: auto;
+        max-width: 100%;
+        margin: 0 auto 0 auto;
+        // Prevent image from expanding below
+        // a parent p set to a specific height
+        max-height: 100%;
+    }
+    // Paragraphs that follow figures should
+    // have an indent when following floated figures.
+    // But while float: bottom and float: top are not
+    // supported in paged.js, we set the indent to 0.
+    & + p {
+        text-indent: $line-height-default; // only if figures are floated
+        text-indent: 0;
+    }
+}

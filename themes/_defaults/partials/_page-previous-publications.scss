@@ -1,0 +1,31 @@
+// _page-previous-publications.scss
+
+#{$page-previous-publications} {
+    page: previous-publications;
+    break-before: page;
+    text-align: center;
+    // Headings should look visually smaller than
+    // their hierarchy suggests
+    h1 {
+        @include h3();
+    }
+    h2 {
+        @include h4();
+    }
+    h3 {
+        @include h5();
+    }
+    h4 {
+        @include h6();
+    }
+    h5 {
+        @include h6();
+    }
+    p {
+        text-align: center;
+        margin-bottom: $line-height-default;
+        & + p {
+            text-indent: 0;
+        }
+    }
+}

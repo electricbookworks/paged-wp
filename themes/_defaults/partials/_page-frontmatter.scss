@@ -1,0 +1,11 @@
+// _page-frontmatter.scss
+
+#{$page-frontmatter} {
+    page: frontmatter;
+    @if $chapters-start-on == 'recto' {
+        break-before: recto;
+    }
+    @if $chapters-start-on == 'verso' {
+        break-before: verso;
+    }
+}

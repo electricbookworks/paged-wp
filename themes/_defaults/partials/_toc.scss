@@ -1,0 +1,46 @@
+// _toc.scss
+
+// Table of Contents list
+// For the TOC page, see _page-toc.scss.
+
+#{$toc} {
+    list-style-type: none;
+    text-align: left; // overrides any potential 'justify' applied in Sass configs
+    padding: 0;
+    margin: 0;
+    // indent nested lists
+    ul, ol {
+        list-style-type: none;
+        margin: 0;
+        margin-left: $line-height-default;
+    }
+    li {
+        margin: 0;
+        a {
+            .toc-entry-text {
+                display: inline-block;
+                max-width: 90%;
+            }
+        }
+        a::after {
+            // leader(" ") is not yet supported in paged.js
+            // See https://gitlab.pagedmedia.org/tools/pagedjs/wikis/Support-of-specifications
+            content: target-counter(attr(href), page);
+            float: right;
+        }
+        &.frontmatter-entry {
+            a::after {
+                content: target-counter(attr(href), page, $frontmatter-page-numbers);
+                float: right;
+            }
+        }
+    }
+    // If a TOC list appears after a paragraph,
+    // or is followed by one, add space
+    p + & {
+        margin-top: $line-height-default;
+    }
+    & + p {
+        margin-top: $line-height-default;
+    }
+}

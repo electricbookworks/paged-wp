@@ -1,0 +1,40 @@
+// _indexes.scss
+
+// Indexes
+
+$index-font-size: $font-size-default * $font-size-smaller;
+
+#{$index} {
+    columns: 2;
+    font-size: $index-font-size;
+    margin: $line-height-default 0 0 0;
+    ul, ol {
+        margin: 0;
+    }
+    li {
+        list-style-type: none;
+        margin: 0 0 0 ($line-height-default * 1);
+        text-indent: $line-height-default * (-1);
+        li {
+            margin: 0 0 0 ($line-height-default / 2);
+        }
+    }
+    a {
+        // Hide the HTML link content with font-size, and
+        // in its place show the page number, with a comma
+        // afterwards except for the last link.
+        text-indent: 0; // avoid inheriting this from parent li
+        font-size: 0;
+        &::before {
+            content: target-counter(attr(href), page);
+            font-size: $index-font-size;
+        }
+        &::after {
+            content: ", ";
+            font-size: $index-font-size;
+        }
+        &:last-of-type::after {
+            content: normal;
+        }
+    }
+}
