@@ -243,7 +243,7 @@ h5 {
 h6 {
     string-set: h6-text content(), h6-title attr(title); }
 
-@page chapter:left {
+@page :left {
     @top {
         content: normal; }
     @top-right {
@@ -265,7 +265,7 @@ h6 {
     @bottom-right-corner {
         content: normal; } }
 
-@page chapter:right {
+@page :right {
     @top {
         content: normal; }
     @top-right {
@@ -287,7 +287,7 @@ h6 {
     @bottom-right-corner {
         content: normal; } }
 
-@page chapter:first {
+@page :first {
     @top {
         content: normal; }
     @top-left {
@@ -299,7 +299,7 @@ h6 {
     @top-right-corner {
         content: normal; } }
 
-@page chapter:blank {
+@page :blank {
     @top {
         content: normal; }
     @top-left {
