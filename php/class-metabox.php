@@ -33,7 +33,6 @@ class Metabox {
 	 * @param WP_Post $post Current post object.
 	 */
 	function meta_display( $post ) {
-		// Display code/markup goes here. Don't forget to include nonces!
 		$preview_link        = esc_url( get_preview_post_link( $post, array( 'paged' => 'true' ) ) );
 		$preview_button_text = __( 'Paged Preview' );
 		$preview_button      = sprintf(
@@ -45,8 +44,7 @@ class Metabox {
 		?>
 		<div class="clear"></div>
 		<div style="padding-top:10px;">
-			<a class="button" href="<?php echo $preview_link; ?>" target="wp-preview-<?php echo (int) $post->ID; ?>"
-			   id="paged-preview"><?php echo $preview_button; ?></a>
+			<a class="button" href="<?php echo $preview_link; ?>" target="wp-preview-<?php echo (int) $post->ID; ?>" id="paged-preview"><?php echo $preview_button; ?></a>
 		</div>
 		<?php
 	}

@@ -19,7 +19,6 @@ class Plugin_Assets {
 
 		add_filter( 'template_include', array( $this, 'template_include' ), 99 );
 	}
-
 	/**
 	 * Check if the paged variable is set and set to true
 	 */
@@ -52,23 +51,21 @@ class Plugin_Assets {
 			<?php
 		}
 	}
-
 	/**
 	 * Add paged JS from source
 	 */
-	function render_paged_js() {
-		if ( $this->paged_is_paged_preview() ) {
+	public function render_paged_js() {
+		if ( $this->is_paged_preview() ) {
 			?>
-			<script type='text/javascript'
-			        src='https://unpkg.com/pagedjs/dist/paged.polyfill.js?ver=<?php echo PAGED_VERSION ?>'></script>
+			<script type='text/javascript' src='https://unpkg.com/pagedjs/dist/paged.polyfill.js?ver=<?php echo PAGED_VERSION ?>'></script>
 			<?php
 		}
 	}
 	/**
 	 * Override default template when using the paged preview.
 	 */
-	function template_include( $template ) {
-		if ( $this->paged_is_paged_preview() ) {
+	public function template_include( $template ) {
+		if ( $this->is_paged_preview() ) {
 			$template = trailingslashit( PAGED_PLUGIN_DIR ) . 'templates/index.php';
 		}
 
