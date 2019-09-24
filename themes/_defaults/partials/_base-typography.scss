@@ -1,0 +1,181 @@
+// _elements.scss
+
+// This file sets styles for basic HTML elements.
+// Tables are styled separately in _tables.scss.
+
+// Defaults
+
+body {
+    font-family: $font-text-main;
+    font-size: $font-size-default;
+    line-height: $line-height-default;
+}
+
+// Headings
+
+@mixin h1() {
+    font-size: $font-size-default * 4;
+    line-height: $line-height-default * 3;
+    margin: ($line-height-default * 2) 0 $line-height-default 0;
+    break-after: avoid;
+    break-inside: avoid;
+}
+@mixin h2() {
+    font-size: $font-size-default * 2.5;
+    line-height: $line-height-default * 2;
+    margin: ($line-height-default * 2) 0 $line-height-default 0;
+    break-after: avoid;
+    break-inside: avoid;
+}
+@mixin h3() {
+    font-size: $font-size-default * 1.4;
+    margin: $line-height-default 0 0 0;
+    break-after: avoid;
+    break-inside: avoid;
+}
+@mixin h4() {
+    font-weight: bold;
+    margin: $line-height-default 0 0 0;
+    break-after: avoid;
+    break-inside: avoid;
+}
+@mixin h5() {
+    font-style: italic;
+    margin: $line-height-default 0 0 0;
+    break-after: avoid;
+    break-inside: avoid;
+}
+@mixin h6() {
+    margin: $line-height-default 0 0 0;
+    break-after: avoid;
+    break-inside: avoid;
+}
+h1 {
+    @include h1();
+}
+h2 {
+    @include h2();
+}
+h3 {
+    @include h3();
+}
+h4 {
+    @include h4();
+}
+h5 {
+    @include h5();
+}
+h6 {
+    @include h6();
+}
+
+// Paragraphs
+@mixin p() {
+    margin: 0;
+    text-align: $text-align-default;
+    // Indent all paragraphs that follow paragraphs
+    & + & {
+        text-indent: $line-height-default;
+    }
+}
+p {
+    @include p();
+}
+
+// Lists
+@mixin list() {
+    margin-top: $line-height-default;
+    margin-bottom: $line-height-default;
+    // Move markers into text area
+    margin-left: $line-height-default;
+}
+@mixin ol() {
+    @include list;
+    list-style: decimal;
+}
+@mixin ul() {
+    @include list;
+    list-style: disc;
+}
+ol {
+    @include ol();
+}
+ul {
+    @include ul();
+}
+
+// Definition lists
+@mixin definition-list() {
+    margin: $line-height-default 0;
+    dt {
+        display: inline-block;
+        float: left;
+        font-weight: bold;
+        margin-right: $font-size-default / 2;
+    }
+}
+dl {
+    @include definition-list;
+}
+
+// Blockquotes
+@mixin blockquote() {
+    padding: $line-height-default;
+    & + blockquote {
+        padding-top: 0;
+    }
+    h1 + &, h2 + &, h3 + &,
+    h4 + &, h5 + &, h6 + & {
+        padding-top: 0;
+    }
+}
+blockquote {
+    @include blockquote();
+}
+
+// Links
+@mixin links() {
+    text-decoration: none;
+    color: $color-links;
+}
+a {
+    @include links();
+}
+
+// Emphasis
+em {
+    font-style: italic;
+}
+strong {
+    font-weight: bold;
+}
+
+// Super- and subscript
+sup, sub {
+    line-height: 0; // prevent increasing line height in print output
+    font-size: 1em * $font-size-smaller;
+}
+sup {
+    vertical-align: super;
+}
+sub {
+    vertical-align: sub;
+}
+
+// Horizontal rules
+// Using <hr> as a text divider
+hr {
+    border: 0;
+    font-family: $font-display-main;
+    text-align: center;
+    margin: $line-height-default 0;
+    &:after {
+        content: $text-divider;
+    }
+}
+
+// Images
+
+img {
+    max-width: 100%;
+}

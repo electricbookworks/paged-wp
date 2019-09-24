@@ -10,7 +10,7 @@ There is a lot still to improve here. For now:
 
 - Paged.js only works properly in Chrome, so you should use Chrome for this, too. 
 - You must hard-code the link to your Paged Media CSS in the paged-wp.php file. By default, it loads the template styles from [paged.design](https://paged.design).
-- In WordPress, you must use the Classic editor. This plugin does not work with the Gutenberg editor.
+- This fork work with the Classic or Gutenberg editor.
 
 ## Roadmap
 

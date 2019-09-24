@@ -27,13 +27,25 @@ require PAGED_PLUGIN_DIR . 'vendor/autoload.php';
 new Plugin_Base( __FILE__, PAGED_VERSION );
 
 /**
- * Admin actions
+ * Register Paged Preview meta box.
  */
+function wppaged_register_meta_boxes() {
+	add_meta_box( 'meta-box-paged', __( 'Paged Preview', 'textdomain' ), 'wppaged_my_display_callback', 'post', 'side', 'high',
+		array(
+			'__back_compat_meta_box' => false,
+		)
+	);
+}
+
+add_action( 'add_meta_boxes', 'wppaged_register_meta_boxes' );
+
 /**
- * Adds Paged Preview Button to Page Public Post Box
+ * Meta box display callback.
+ *
+ * @param WP_Post $post Current post object.
  */
-add_action( 'post_submitbox_minor_actions', 'paged_add_paged_preview_button', 10, 1 );
-function paged_add_paged_preview_button( $post ) {
+function wppaged_my_display_callback( $post ) {
+	// Display code/markup goes here. Don't forget to include nonces!
 	$preview_link        = esc_url( get_preview_post_link( $post, array( 'paged' => 'true' ) ) );
 	$preview_button_text = __( 'Paged Preview' );
 	$preview_button      = sprintf(
@@ -45,11 +57,22 @@ function paged_add_paged_preview_button( $post ) {
 	?>
 	<div class="clear"></div>
 	<div style="padding-top:10px;">
-		<a class="preview button" href="<?php echo $preview_link; ?>" target="wp-preview-<?php echo (int) $post->ID; ?>"
-		   id="post-preview"><?php echo $preview_button; ?></a>
+		<a class="button" href="<?php echo $preview_link; ?>" target="wp-preview-<?php echo (int) $post->ID; ?>"
+		   id="paged-preview"><?php echo $preview_button; ?></a>
 	</div>
 	<?php
 }
+
+/**
+ * Save meta box content.
+ *
+ * @param int $post_id Post ID
+ */
+function wppaged_save_meta_box( $post_id ) {
+	// Save logic goes here. Don't forget to include nonce checks!
+}
+
+add_action( 'save_post', 'wppaged_save_meta_box' );
 
 /**
  * Frontend actions
