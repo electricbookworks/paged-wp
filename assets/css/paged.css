@@ -3764,10 +3764,11 @@ pre + p {
     color: #0000cf;
     font-weight: bold; }
 
-@page .cover {
+@page cover {
           margin: 0; }
 
 .cover {
+    page: cover;
     margin: 0;
     padding: 0;
     position: absolute;
