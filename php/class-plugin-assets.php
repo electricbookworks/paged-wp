@@ -37,39 +37,45 @@ class Plugin_Assets {
 	 * Add paged CSS
 	 */
 	public function render_paged_css() {
-		if ( $this->is_paged_preview() ) {
-			?>
-			<link rel='stylesheet' id='paged-css' href='<?php echo PAGED_PLUGIN_URL ?>/assets/css/paged.css?ver=<?php echo PAGED_VERSION ?>' type='text/css'/>
-			<?php
+		if ( ! $this->is_paged_preview() ) {
+			return;
 		}
+		$paged_css        = file_get_contents( PAGED_PLUGIN_DIR . '/assets/css/paged.css' );
 		$paged_custom_css = get_option( 'paged_custom_css', '' );
 		if ( ! empty( $paged_custom_css ) ) {
-			?>
-			<style type="text/css" id="custom-paged-css">
-				<?php echo $paged_custom_css ?>
-			</style>
-			<?php
+			$paged_css .= PHP_EOL . $paged_custom_css . PHP_EOL;
 		}
+		?>
+		<style type="text/css" id="paged-css">
+			<?php echo $paged_css ?>
+		</style>
+		<?php
 	}
 	/**
 	 * Add paged JS from source
 	 */
 	public function render_paged_js() {
-		if ( $this->is_paged_preview() ) {
-			?>
-			<script type='text/javascript' src='https://unpkg.com/pagedjs/dist/paged.polyfill.js?ver=<?php echo PAGED_VERSION ?>'></script>
-			<?php
+		if ( ! $this->is_paged_preview() ) {
+			return;
 		}
+		?>
+		<script type='text/javascript' src='https://unpkg.com/pagedjs/dist/paged.polyfill.js?ver=<?php echo PAGED_VERSION ?>'></script>
+		<?php
 	}
+
 	/**
 	 * Override default template when using the paged preview.
+	 *
+	 * @param $template
+	 *
+	 * @return string
 	 */
 	public function template_include( $template ) {
-		if ( $this->is_paged_preview() ) {
-			$template = trailingslashit( PAGED_PLUGIN_DIR ) . 'templates/index.php';
+		if ( ! $this->is_paged_preview() ) {
+			return $template;
 		}
 
-		return $template;
+		return trailingslashit( PAGED_PLUGIN_DIR ) . 'templates/index.php';
 	}
 
 }
