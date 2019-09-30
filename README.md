@@ -24,6 +24,8 @@ To customise the design of your paged layout, open the plugin settings from Sett
 
 Add your custom CSS to the Custom CSS editor and click 'Save Settings'. If you already have a paged-preview tab open, refresh it to see your changes.
 
+The paged layout depends on Paged Media CSS properties, such as `@page`, and specifically those supported by PagedJS. See the [PagedJS page](https://www.pagedmedia.org/paged-js/) for more details.
+
 
 ## Technical information
 
