@@ -1,17 +1,34 @@
 # Paged WP: beautiful PDFs from Wordpress posts and pages
 
-Paged WP is a very simple, proof-of-concept Wordpress plugin that adds a button to the admin view of Wordpress pages/posts.
+Paged WP is a simple Wordpress plugin that lets you see a print-ready version of your posts and pages, laid out like the pages of a book. You can adapt the default design with your own custom CSS.
 
-Clicking that button opens a preview of the post in a new tab, in which we load only the page content, [paged.js](https://www.pagedmedia.org/paged-js/), and a custom Paged Media CSS file, so that you can get a rendered paged view and save it to PDF.
 
-## Usage
+## Installation
 
-There is a lot still to improve here. For now:
+1. [Download this repository as a zip file](https://github.com/electricbookworks/paged-wp/archive/master.zip).
+2. In your Wordpress admin, go to Plugins > Add New and click 'Upload Plugin'.
+3. Click 'Choose File' and find and select the zip file.
+4. Click 'Install Now' and then 'Activate'.
 
-- Paged.js only works properly in Chrome, so you should use Chrome for this, too. 
-- You must hard-code the link to your Paged Media CSS in the paged-wp.php file. By default, it loads the template styles from [paged.design](https://paged.design).
-- In WordPress, you must use the Classic editor. This plugin does not work with the Gutenberg editor.
 
-## Roadmap
+## Viewing paged output
 
-We'd like to make it easier to link to and/or add custom CSS, and to clean up the code to be more function-oriented and less procedural. That will depend on our finding time and funding to continue work on it.
+To see the paged version of a post or page, open the post or page in the Wordpress admin and click the 'Paged Preview' button. (The button appears in the 'Paged Preview' widget on the right of the editor.) That will open a new preview tab showing the paged version of your post or page.
+
+To save a PDF, press Ctrl+P/Cmd+P in Chrome. **Note that paged output only works properly in Chrome currently.**
+
+
+## Customising the paged layout
+
+To customise the design of your paged layout, open the plugin settings from Settings > Paged WP or from the Settings link in Plugins > Installed Plugins.
+
+Add your custom CSS to the Custom CSS editor and click 'Save Settings'. If you already have a paged-preview tab open, refresh it to see your changes.
+
+
+## Technical information
+
+The Paged Preview widget button opens a preview of a post or page in a new tab, in which we load only the page content, [paged.js](https://www.pagedmedia.org/paged-js/), and a custom Paged Media CSS file. The default styles were created from the [paged.design](https://paged.design) default template.
+
+This plugin is maintained by [Electric Book Works](https://electricbookworks.com/), and its creation was funded by [Cabbage Tree Labs](https://www.cabbagetreelabs.org/).
+
+Please contribute by logging [issues](https://github.com/electricbookworks/paged-wp/issues) or contributing pull requests. The ongoing maintenance of the plugin is not funded, so we may be slow to reply. For paid support or Paged CSS development, [contact Electric Book Works](https://electricbookworks.com/contact).

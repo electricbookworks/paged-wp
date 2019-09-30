@@ -1,0 +1,10 @@
+{
+    "name": "electricbookworks/paged-wp",
+    "description": "Paged WP: beautiful PDFs from WordPress posts and pages",
+    "type": "wordpress-plugin",
+    "license": "GPL",
+    "require": {},
+    "autoload"   : {
+        "classmap": ["php/"]
+    }
+}
