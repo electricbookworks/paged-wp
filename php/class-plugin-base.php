@@ -65,7 +65,7 @@ class Plugin_Base {
 		$upload_dir       = wp_upload_dir();
 		$base_dir         = $upload_dir['basedir'];
 		$paged_upload_dir = "$base_dir/paged";
-		if ( ! dir( $paged_upload_dir ) ) {
+		if ( ! is_dir( $paged_upload_dir ) ) {
 			wp_mkdir_p( $paged_upload_dir );
 		}
 
