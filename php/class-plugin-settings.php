@@ -167,10 +167,23 @@ class Plugin_Settings {
 	 */
 	private function settings_fields() {
 
+		$paged_css_options = array( 'default' => 'paged.css' );
+		$custom_css_files  = $this->parent->get_custom_css_files();
+		$paged_css_options = array_merge( $paged_css_options, $custom_css_files );
+
 		$settings['standard'] = array(
 			'title'       => __( 'Page design', 'paged-wp' ),
-			'description' => __( 'Add custom CSS styles for Paged WP here. They will override the default Paged WP styles.', 'paged-wp' ),
+			'description' => __( 'Manage the CSS styles for Paged WP here. They will override the default Paged WP styles.', 'paged-wp' ),
 			'fields'      => array(
+				array(
+					'id'          => 'css_stylesheet',
+					'label'       => __( 'Paged Media CSS Stylesheet', 'paged-wp' ),
+					'description' => __( 'Select a Paged Media CSS Stylesheet you want to use, or upload a new one.', 'paged-wp' ),
+					'type'        => 'select',
+					'options'     => $paged_css_options,
+					'default'     => '',
+					'placeholder' => __( '', 'paged-wp' ),
+				),
 				array(
 					'id'          => 'custom_css',
 					'label'       => __( 'Custom CSS', 'paged-wp' ),

@@ -29,7 +29,21 @@ class Code_Editor {
 		if ( 'settings_page_paged__settings' !== $hook ) {
 			return;
 		}
+
 		wp_enqueue_code_editor( array( 'type' => 'text/html' ) );
 		wp_enqueue_script( 'js-code-editor', $this->parent->assets_url . '/js/code-editor.js', array( 'jquery' ), $this->parent->version, true );
+
+		wp_enqueue_script( 'plupload-all' );
+
+		wp_enqueue_script( 'paged-admin', $this->parent->assets_url . '/js/paged-admin.js', array( 'jquery' ), $this->parent->version, true );
+		$ajax_nonce = wp_create_nonce( 'paged_nonce' );
+		wp_localize_script(
+			'paged-admin',
+			'paged_ajax',
+			array(
+				'ajax_url' => admin_url( 'admin-ajax.php' ),
+				'nonce'    => $ajax_nonce,
+			)
+		);
 	}
 }
