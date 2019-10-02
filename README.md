@@ -35,4 +35,4 @@ This plugin is maintained by [Electric Book Works](https://electricbookworks.com
 
 Please contribute by logging [issues](https://github.com/electricbookworks/paged-wp/issues) or contributing pull requests. The ongoing maintenance of the plugin is not funded, so we may be slow to reply. For paid support or Paged CSS development, [contact Electric Book Works](https://electricbookworks.com/contact).
 
-Project contributors: [Arthur Atwell](@arthurattwell), [Jonathan Bossenger](@jonathanbossenger), [Typometer](@typometre)
+Project contributors: [Arthur Atwell](https://github.com/arthurattwell), [Jonathan Bossenger](https://github.com/jonathanbossenger), [Typometer](https://github.com/typometre)
