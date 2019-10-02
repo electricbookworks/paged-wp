@@ -34,3 +34,5 @@ The Paged Preview widget button opens a preview of a post or page in a new tab, 
 This plugin is maintained by [Electric Book Works](https://electricbookworks.com/), and its creation was funded by [Cabbage Tree Labs](https://www.cabbagetreelabs.org/).
 
 Please contribute by logging [issues](https://github.com/electricbookworks/paged-wp/issues) or contributing pull requests. The ongoing maintenance of the plugin is not funded, so we may be slow to reply. For paid support or Paged CSS development, [contact Electric Book Works](https://electricbookworks.com/contact).
+
+Project contributors: [Arthur Atwell](@arthurattwell), [Jonathan Bossenger](@jonathanbossenger), [Typometer](@typometre)
