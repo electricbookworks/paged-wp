@@ -35,8 +35,6 @@ This plugin is maintained by [Electric Book Works](https://electricbookworks.com
 
 Please contribute by logging [issues](https://github.com/electricbookworks/paged-wp/issues) or contributing pull requests. The ongoing maintenance of the plugin is not funded, so we may be slow to reply. For paid support or Paged CSS development, [contact Electric Book Works](https://electricbookworks.com/contact).
 
-Project contributors: [Arthur Atwell](https://github.com/arthurattwell), [Jonathan Bossenger](https://github.com/jonathanbossenger), [Typometer](https://github.com/typometre)
-
 ## Developer information
 
 To package a version of this plugin for release
@@ -48,3 +46,7 @@ To package a version of this plugin for release
 `wp dist-archive paged-wp`
 
 This will package the plugin with the plugin slug and version number, for redistribution
+
+## Contributors
+
+[Arthur Attwell](https://github.com/arthurattwell), [Jonathan Bossenger](https://github.com/jonathanbossenger), [typometre](https://github.com/typometre)
