@@ -7,6 +7,7 @@ namespace Composer\Autoload;
 class ComposerStaticInit73d6a8188589a2c5fa20c0568114d96e
 {
     public static $classMap = array (
+        'PagedWP\\Ajax' => __DIR__ . '/../..' . '/php/class-ajax.php',
         'PagedWP\\Code_Editor' => __DIR__ . '/../..' . '/php/class-code-editor.php',
         'PagedWP\\Metabox' => __DIR__ . '/../..' . '/php/class-metabox.php',
         'PagedWP\\Plugin_Admin_API' => __DIR__ . '/../..' . '/php/class-plugin-admin-api.php',

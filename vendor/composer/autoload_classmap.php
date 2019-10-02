@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'PagedWP\\Ajax' => $baseDir . '/php/class-ajax.php',
     'PagedWP\\Code_Editor' => $baseDir . '/php/class-code-editor.php',
     'PagedWP\\Metabox' => $baseDir . '/php/class-metabox.php',
     'PagedWP\\Plugin_Admin_API' => $baseDir . '/php/class-plugin-admin-api.php',

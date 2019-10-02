@@ -9,7 +9,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class Plugin_Assets {
 
-	public function __construct() {
+	public $parent;
+
+	public function __construct( $parent ) {
+		$this->parent = $parent;
 		$this->bootstrap();
 	}
 
@@ -40,7 +43,12 @@ class Plugin_Assets {
 		if ( ! $this->is_paged_preview() ) {
 			return;
 		}
-		$paged_css        = file_get_contents( PAGED_PLUGIN_DIR . '/assets/css/paged.css' );
+		$paged_css_stylesheet = get_option( 'paged_css_stylesheet', '' );
+		if ( empty( $paged_css_stylesheet ) || 'default' === $paged_css_stylesheet ) {
+			$paged_css = file_get_contents( PAGED_PLUGIN_DIR . '/assets/css/paged.css' );
+		} else {
+			$paged_css = file_get_contents( $this->parent->get_paged_upload_directory() . '/' . $paged_css_stylesheet );
+		}
 		$paged_custom_css = get_option( 'paged_custom_css', '' );
 		if ( ! empty( $paged_custom_css ) ) {
 			$paged_css .= PHP_EOL . $paged_custom_css . PHP_EOL;

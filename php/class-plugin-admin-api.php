@@ -148,6 +148,9 @@ class Plugin_Admin_API {
 					$html .= '<option ' . selected( $selected, true, false ) . ' value="' . esc_attr( $k ) . '">' . $v . '</option>';
 				}
 				$html .= '</select> ';
+				if ( 'css_stylesheet' === $field['id'] ) {
+					$html .= '<input id="paged_fileupload" type="file" name="file">';
+				}
 				break;
 
 			case 'select_multi':
