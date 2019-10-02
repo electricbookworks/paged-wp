@@ -5,7 +5,7 @@ Paged WP is a simple Wordpress plugin that lets you see a print-ready version of
 
 ## Installation
 
-1. [Download this repository as a zip file](https://github.com/electricbookworks/paged-wp/archive/master.zip).
+1. Download the latest packaged version in zip format from the [Releases page](https://github.com/electricbookworks/paged-wp/releases).
 2. In your Wordpress admin, go to Plugins > Add New and click 'Upload Plugin'.
 3. Click 'Choose File' and find and select the zip file.
 4. Click 'Install Now' and then 'Activate'.
@@ -34,6 +34,18 @@ The Paged Preview widget button opens a preview of a post or page in a new tab, 
 This plugin is maintained by [Electric Book Works](https://electricbookworks.com/), and its creation was funded by [Cabbage Tree Labs](https://www.cabbagetreelabs.org/).
 
 Please contribute by logging [issues](https://github.com/electricbookworks/paged-wp/issues) or contributing pull requests. The ongoing maintenance of the plugin is not funded, so we may be slow to reply. For paid support or Paged CSS development, [contact Electric Book Works](https://electricbookworks.com/contact).
+
+## Developer information
+
+To package a version of this plugin for release
+
+1. Install [WP CLI](https://wp-cli.org/) and the [dist-archive](https://developer.wordpress.org/cli/commands/dist-archive/) command
+2. Clone this repository to your local development environment 
+` git clone git@github.com:electricbookworks/paged-wp.git`
+3. In the directory above the paged-wp directory, run the dist-archive command
+`wp dist-archive paged-wp`
+
+This will package the plugin with the plugin slug and version number, for redistribution
 
 ## Contributors
 
